@@ -1,0 +1,128 @@
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px 32px;
+  background: radial-gradient(circle at top, rgba(0, 20, 40, 0.28), transparent 55%);
+}
+
+.hud__title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.35rem;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-magenta), var(--accent-electric));
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 12px rgba(255, 200, 120, 0.65), 0 0 26px rgba(120, 0, 220, 0.35);
+}
+
+.hud__subtitle {
+  margin-top: 16px;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: rgba(200, 230, 255, 0.7);
+  text-align: center;
+}
+
+.hud__timeline {
+  position: relative;
+  width: min(720px, 80vw);
+  height: 6px;
+  background: rgba(20, 40, 80, 0.6);
+  border-radius: 999px;
+  overflow: visible;
+  box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.2);
+}
+
+.hud__tracker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 255, 220, 0.8), rgba(255, 120, 40, 0.8));
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(255, 120, 40, 0.6);
+}
+
+.hud__marker {
+  position: absolute;
+  top: -28px;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  letter-spacing: 0.08rem;
+  color: rgba(180, 210, 255, 0.7);
+  transition: color 0.4s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hud__marker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: rgba(180, 210, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 220, 0.7);
+}
+
+.hud__marker--active {
+  color: var(--accent-neon);
+}
+
+.hud__marker--active::after {
+  background: var(--accent-magenta);
+  box-shadow: 0 0 18px rgba(255, 70, 220, 0.9);
+}
+
+.hud__footer {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, auto));
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(6, 12, 32, 0.6);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(0, 255, 220, 0.18);
+  box-shadow: 0 12px 60px rgba(0, 0, 0, 0.35);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+}
+
+.hud__footer span {
+  color: rgba(160, 190, 255, 0.6);
+}
+
+.hud__footer strong {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .hud {
+    padding: 24px 16px 36px;
+  }
+
+  .hud__title {
+    letter-spacing: 0.2rem;
+  }
+
+  .hud__timeline {
+    width: 100%;
+  }
+
+  .hud__marker span {
+    display: none;
+  }
+}
